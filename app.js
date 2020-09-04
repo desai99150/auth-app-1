@@ -1,5 +1,6 @@
 const express = require('express');
 const morgan = require('morgan');
+const cors = require('cors')
 
 
 const AppError = require('./utils/appError');
@@ -10,6 +11,10 @@ const userRouter = require('./routes/userRoutes');
 const app = express();
 
 //   (1) middlewares
+// implement cors
+app.use(cors({
+  origin: 'https://auth-app-2.shubhamdesai.repl.co'
+}));
 if (process.env.NODE_ENV === 'development') {
   app.use(morgan('dev'));
 }
